@@ -37,8 +37,8 @@ $(call inherit-product, vendor/xiaomi/raphael/raphael-vendor.mk)
 $(call inherit-product, vendor/xiaomi/miuicamera/config.mk)
 
 # Get Perf aspects
-$(call inherit-product, device/qcom/common/system/perf/qti-perf.mk)
-$(call inherit-product, device/qcom/common/vendor/perf-legacy/qti-perf-legacy.mk)
+# $(call inherit-product, device/qcom/common/system/perf/qti-perf.mk)
+# $(call inherit-product, device/qcom/common/vendor/perf-legacy/qti-perf-legacy.mk)
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
@@ -138,6 +138,19 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.front.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.front.xml \
     frameworks/native/data/etc/android.hardware.camera.full.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.full.xml \
     frameworks/native/data/etc/android.hardware.camera.raw.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.raw.xml
+
+=======
+# Charger
+PRODUCT_PACKAGES += \
+    libsuspend
+
+# ConfigStore
+PRODUCT_PACKAGES += \
+    disable_configstore
+
+# Google Photos
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/pixel/pixel_2016_exclusive.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/pixel_2016_exclusive.xml
 
 # Dalvik
 PRODUCT_PROPERTY_OVERRIDES += \
