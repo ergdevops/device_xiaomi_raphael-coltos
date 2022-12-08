@@ -1,6 +1,5 @@
 /*
- * Copyright (C) 2015-2016 The CyanogenMod Project
- *               2020 YAAP
+ * Copyright (C) 2020 Paranoid Android
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,21 +14,26 @@
  * limitations under the License.
  */
 
-package org.lineageos.settings.display;
+package org.lineageos.settings.speaker;
 
+import android.app.Fragment;
 import android.os.Bundle;
-
 import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
 import com.android.settingslib.widget.R;
 
-public class DisplaySettingsActivity extends CollapsingToolbarBaseActivity {
-
-    private static final String TAG_DCDIMMING = "dcdimming";
+public class ClearSpeakerActivity extends CollapsingToolbarBaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getFragmentManager().beginTransaction().replace(R.id.content_frame,
-                new DisplaySettingsFragment(), TAG_DCDIMMING).commit();
+
+        Fragment fragment = getFragmentManager().findFragmentById(R.id.content_frame);
+        ClearSpeakerFragment clearSpeakerFragment;
+        if (fragment == null) {
+            clearSpeakerFragment = new ClearSpeakerFragment();
+            getFragmentManager().beginTransaction()
+                    .add(R.id.content_frame, clearSpeakerFragment)
+                    .commit();
+        }
     }
 }
