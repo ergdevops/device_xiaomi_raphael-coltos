@@ -26,6 +26,13 @@ $(call inherit-product, vendor/colt/config/common_full_phone.mk)
 COLT_BUILD_MAINTAINER := ergdev
 TARGET_BOOT_ANIMATION_RES := 1080
 
+# UDFPS animations
+EXTRA_UDFPS_ANIMATIONS := true
+TARGET_HAS_UDFPS := true
+TARGET_ENABLE_BLUR := true
+TARGET_SUPPORTS_QUICK_TAP := true
+
+
 # Boot animation
 TARGET_SCREEN_HEIGHT := 2340
 TARGET_SCREEN_WIDTH := 1080
